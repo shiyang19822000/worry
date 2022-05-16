@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "别闹",
+  "usingComponents": {
+    "goods-category": "./components/goods-category/index"
+  }
+}
