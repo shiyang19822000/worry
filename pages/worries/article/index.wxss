@@ -3,23 +3,23 @@ page {
   width: 100vw;
 }
 
-.goods-detail-page .goods-info {
+.worry-detail-page .worry-info {
   margin: 0 auto;
   padding: 26rpx 0 28rpx 30rpx;
   background-color: #fff;
 }
 
-.goods-detail-page .swipe-img {
+.worry-detail-page .swipe-img {
   width: 100%;
   height: 750rpx;
 }
 
-.goods-detail-page .goods-info .goods-price {
+.worry-detail-page .worry-info .worry-price {
   display: flex;
   align-items: baseline;
 }
 
-.goods-detail-page .goods-info .goods-price-up {
+.worry-detail-page .worry-info .worry-price-up {
   color: #fa4126;
   font-size: 28rpx;
   position: relative;
@@ -27,19 +27,19 @@ page {
   left: 8rpx;
 }
 
-.goods-detail-page .goods-info .goods-price .class-goods-price {
+.worry-detail-page .worry-info .worry-price .class-worry-price {
   font-size: 64rpx;
   color: #fa4126;
   font-weight: bold;
   font-family: DIN Alternate;
 }
 
-.goods-detail-page .goods-info .goods-price .class-goods-symbol {
+.worry-detail-page .worry-info .worry-price .class-worry-symbol {
   font-size: 36rpx;
   color: #fa4126;
 }
 
-.goods-detail-page .goods-info .goods-price .class-goods-del {
+.worry-detail-page .worry-info .worry-price .class-worry-del {
   position: relative;
   font-weight: normal;
   left: 16rpx;
@@ -48,13 +48,13 @@ page {
   font-size: 32rpx;
 }
 
-.goods-detail-page .goods-info .goods-number {
+.worry-detail-page .worry-info .worry-number {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.goods-detail-page .goods-info .goods-number .sold-num {
+.worry-detail-page .worry-info .worry-number .sold-num {
   font-size: 24rpx;
   color: #999999;
   display: flex;
@@ -62,21 +62,21 @@ page {
   margin-right: 32rpx;
 }
 
-.goods-detail-page .goods-info .goods-activity {
+.worry-detail-page .worry-info .worry-activity {
   display: flex;
   margin-top: 16rpx;
   justify-content: space-between;
 }
 
-.goods-detail-page .goods-info .goods-activity .tags-container {
+.worry-detail-page .worry-info .worry-activity .tags-container {
   display: flex;
 }
 
-.goods-detail-page
-  .goods-info
-  .goods-activity
+.worry-detail-page
+  .worry-info
+  .worry-activity
   .tags-container
-  .goods-activity-tag {
+  .worry-activity-tag {
   background: #ffece9;
   color: #fa4126;
   font-size: 24rpx;
@@ -85,7 +85,7 @@ page {
   border-radius: 4rpx;
 }
 
-.goods-detail-page .goods-info .goods-activity .activity-show {
+.worry-detail-page .worry-info .worry-activity .activity-show {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,18 +94,18 @@ page {
   padding-right: 32rpx;
 }
 
-.goods-detail-page .goods-info .goods-activity .activity-show-text {
+.worry-detail-page .worry-info .worry-activity .activity-show-text {
   line-height: 42rpx;
 }
 
-.goods-detail-page .goods-info .goods-title {
+.worry-detail-page .worry-info .worry-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20rpx;
 }
 
-.goods-detail-page .goods-info .goods-title .goods-name {
+.worry-detail-page .worry-info .worry-title .worry-name {
   width: 600rpx;
   font-weight: 500;
   display: -webkit-box;
@@ -117,12 +117,12 @@ page {
   color: #333333;
 }
 
-.goods-detail-page .goods-info .goods-title .goods-tag {
+.worry-detail-page .worry-info .worry-title .worry-tag {
   width: 104rpx;
   margin-left: 26rpx;
 }
 
-.goods-detail-page .goods-info .goods-title .goods-tag .shareBtn {
+.worry-detail-page .worry-info .worry-title .worry-tag .shareBtn {
   border-radius: 200rpx 0px 0px 200rpx;
   width: 100rpx;
   height: 96rpx;
@@ -130,11 +130,11 @@ page {
   padding-right: 36rpx !important;
 }
 
-.goods-detail-page .goods-info .goods-title .goods-tag .shareBtn::after {
+.worry-detail-page .worry-info .worry-title .worry-tag .shareBtn::after {
   border: none;
 }
 
-.goods-detail-page .goods-info .goods-title .goods-tag .btn-icon {
+.worry-detail-page .worry-info .worry-title .worry-tag .btn-icon {
   font-size: 20rpx;
   display: flex;
   flex-direction: column;
@@ -144,11 +144,11 @@ page {
   color: #999;
 }
 
-.goods-detail-page .goods-info .goods-title .goods-tag .btn-icon .share-text {
+.worry-detail-page .worry-info .worry-title .worry-tag .btn-icon .share-text {
   line-height: 32rpx;
 }
 
-.goods-detail-page .goods-info .goods-intro {
+.worry-detail-page .worry-info .worry-intro {
   font-size: 26rpx;
   color: #888;
   line-height: 36rpx;
@@ -190,13 +190,13 @@ page {
   color: #aaa;
 }
 
-.goods-detail-page .desc-content {
+.worry-detail-page .desc-content {
   margin-top: 20rpx;
   background-color: #fff;
   padding-bottom: 120rpx;
 }
 
-.goods-detail-page .desc-content__title {
+.worry-detail-page .desc-content__title {
   font-size: 28rpx;
   line-height: 36rpx;
   text-align: center;
@@ -206,23 +206,23 @@ page {
   padding: 30rpx 20rpx;
 }
 
-.goods-detail-page .desc-content__title .img {
+.worry-detail-page .desc-content__title .img {
   width: 206rpx;
   height: 10rpx;
 }
 
-.goods-detail-page .desc-content__title--text {
+.worry-detail-page .desc-content__title--text {
   font-size: 26rpx;
   margin: 0 32rpx;
   font-weight: 600;
 }
 
-.goods-detail-page .desc-content__img {
+.worry-detail-page .desc-content__img {
   width: 100%;
   height: auto;
 }
 
-.goods-bottom-operation {
+.worry-bottom-operation {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -231,7 +231,7 @@ page {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-.popup-sku-header .popup-sku-header__goods-info .popup-sku__price {
+.popup-sku-header .popup-sku-header__worry-info .popup-sku__price {
   display: flex;
   align-items: baseline;
   color: #fa4126;
@@ -239,7 +239,7 @@ page {
 }
 
 .popup-sku-header
-  .popup-sku-header__goods-info
+  .popup-sku-header__worry-info
   .popup-sku__price
   .popup-sku__price-num {
   font-size: 64rpx;
@@ -249,7 +249,7 @@ page {
 }
 
 .popup-sku-header
-  .popup-sku-header__goods-info
+  .popup-sku-header__worry-info
   .popup-sku__price
   .popup-sku__price-del {
   position: relative;
@@ -261,7 +261,7 @@ page {
 }
 
 .popup-sku-header
-  .popup-sku-header__goods-info
+  .popup-sku-header__worry-info
   .popup-sku__price
   .popup-sku__price-symbol {
   font-size: 36rpx;
@@ -269,13 +269,13 @@ page {
 }
 
 .popup-sku-header
-  .popup-sku-header__goods-info
+  .popup-sku-header__worry-info
   .popup-sku__price
   .popup-sku__price-max-num {
   font-size: 48rpx;
 }
 
-.goods-detail-page .goods-head .t-swiper {
+.worry-detail-page .worry-head .t-swiper {
   height: 450rpx !important;
 }
 

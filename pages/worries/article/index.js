@@ -1,15 +1,9 @@
 import Toast from 'tdesign-miniprogram/toast/index';
-import { fetchGood } from '../../../services/good/fetchGood';
-import { fetchActivityList } from '../../../services/activity/fetchActivityList';
-import {
-  getGoodsDetailsCommentList,
-  getGoodsDetailsCommentsCount,
-} from '../../../services/good/fetchGoodsDetailsComments';
-
 import { cdnBase } from '../../../config/index';
+import { fetchArticle } from "../../../model/worry/worry";
+
 
 const imgPrefix = `${cdnBase}/`;
-
 const recLeftImg = `${imgPrefix}common/rec-left.png`;
 const recRightImg = `${imgPrefix}common/rec-right.png`;
 const obj2Params = (obj = {}, encode = false) => {
@@ -23,6 +17,7 @@ const obj2Params = (obj = {}, encode = false) => {
 
 Page({
   data: {
+    articleId: 0,
     commentsList: [],
     commentsStatistics: {
       badCount: 0,
@@ -36,7 +31,7 @@ Page({
     activityList: [],
     recLeftImg,
     recRightImg,
-    details: {},
+    detail: {},
     goodsTabArray: [
       {
         name: '商品',
@@ -297,8 +292,13 @@ Page({
     });
   },
 
-  getDetail(spuId) {
-    Promise.all([fetchGood(spuId), fetchActivityList()]).then((res) => {
+  async getDetail(articleId) {
+    console.log('=====articleId', articleId);
+    const articleDetail = await fetchArticle(articleId);
+    this.setData({
+      detail: articleDetail,
+    });
+    /*Promise.all([fetchGood(spuId), fetchActivityList()]).then((res) => {
       const [details, activityList] = res;
       const skuArray = [];
       const {
@@ -337,7 +337,7 @@ Page({
         soldout: isPutOnSale === 0,
         soldNum,
       });
-    });
+    });*/
   },
 
   async getCommentsList() {
@@ -422,12 +422,11 @@ Page({
   },
 
   onLoad(query) {
-    const { spuId } = query;
+    console.log('asdfafas ');
+    console.log('articleId99999999', query.articleId);
     this.setData({
-      spuId: spuId,
+      articleId: articleId,
     });
-    this.getDetail(spuId);
-    this.getCommentsList(spuId);
-    this.getCommentsStatistics(spuId);
+    this.getDetail(articleId);
   },
 });

@@ -1,4 +1,4 @@
-<view class="worry-list-wrap wr-class" id="{{independentID}}">
+<view class="worry-list-wrap wr-class" id="{{articleId}}">
 	<block wx:for="{{articleList}}" wx:for-item="item" wx:key="index">
 		<worry-card
 		  id="{{index}}"
@@ -6,10 +6,9 @@
 		  class="goods-card-inside"
 		  data-index="{{index}}"
 		  bind:thumb="onClickGoodsThumb"
-		  bind:click="onClickGoods"
+		  bind:click="onClickArticles"
 		  bind:add-cart="onAddCart"
 		/>
 	</block>
-	12121212
 </view>
 

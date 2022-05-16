@@ -84,13 +84,13 @@ Page({
     const pageSize = this.articleListPagination.num;
     let pageIndex =
       this.privateData.tabIndex * pageSize + this.articleListPagination.index + 1;
+
     if (fresh) {
       pageIndex = 0;
     }
 
     try {
       const nextList = await fetchArticleList(pageIndex, pageSize);
-      console.log('===============----------', nextList);
       this.setData({
         articleList: fresh ? nextList : this.data.articleList.concat(nextList),
         articlesLoadStatus: 0,
@@ -103,11 +103,17 @@ Page({
     }
   },
 
+  listClickHandle(e) {
+    console.log('eeeeeeeeeeeeeeee=====',e)
+
+  },
+
   articleListClickHandle(e) {
     const { index } = e.detail;
-    const { spuId } = this.data.articleList[index];
+    const { articleId } = this.data.articleList[index];
+    console.log('1212112221====', this.data.articleList);
     wx.navigateTo({
-      url: `/pages/worries/article/index?spuId=${spuId}`,
+      url: `/pages/worries/article/index?articleId=${articleId}`,
     });
   },
 

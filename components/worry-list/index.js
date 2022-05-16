@@ -10,7 +10,7 @@ Component({
       type: String,
       value: '',
       observer: (id) => {
-        this.genIndependentID(id);
+        this.genArticleId(id);
       },
     },
     thresholds: {
@@ -20,7 +20,7 @@ Component({
   },
 
   data: {
-    independentID: '',
+    articleId: '',
   },
 
   lifetimes: {
@@ -30,8 +30,9 @@ Component({
   },
 
   methods: {
-    onClickGoods(e) {
+    onClickArticles(e) {
       const { index } = e.currentTarget.dataset;
+      console.log('1010010110100===', e, index);
       this.triggerEvent('click', { ...e.detail, index });
     },
 
@@ -46,17 +47,11 @@ Component({
     },
 
     init() {
-      this.genIndependentID(this.id || '');
+      this.genArticleId(this.id || '');
     },
 
-    genIndependentID(id) {
-      if (id) {
-        this.setData({ independentID: id });
-      } else {
-        this.setData({
-          independentID: `worry-list-${~~(Math.random() * 10 ** 8)}`,
-        });
-      }
+    genArticleId(id) {
+      this.setData({ articleId: id });
     },
   },
 });

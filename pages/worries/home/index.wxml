@@ -60,7 +60,7 @@
 	<worry-list
 	  wr-class="worry-list-container"
 	  articleList="{{articleList}}"
-	  bind:click="articleListClickHandle"
+	  bind:click="listClickHandle"
 	  bind:addcart="articleListAddCartHandle"
 	/>
 	<load-more list-is-empty="{{!articleList.length}}" status="{{articlesLoadStatus}}" bind:retry="onReTry" />

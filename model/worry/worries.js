@@ -1,3 +1,5 @@
+import { fetchArticle, fetchExplicitArticleList } from "./worry";
+
 export function getMockArticleList(baseID = 0, length = 10) {
   const { fetchMockArticleList } = require('./worry');
   return new Array(length)
@@ -8,5 +10,11 @@ export function getMockArticleList(baseID = 0, length = 10) {
 export async function getExplicitArticleList(offset = 0, limit = 10) {
   const { fetchExplicitArticleList } = require('./worry');
   const request = await fetchExplicitArticleList(offset, limit);
+  return request.data.results;
+}
+
+export async function getArticle(articleId) {
+  const { fetchArticle } = require('./worry');
+  const request = await fetchArticle(articleId);
   return request.data.results;
 }

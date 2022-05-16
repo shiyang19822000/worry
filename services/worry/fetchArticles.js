@@ -38,3 +38,9 @@ export function fetchArticleList(pageIndex = 1, pageSize = 20) {
     resolve('real api');
   });
 }
+
+/** 获取文章 */
+export function fetchArticle(articleId) {
+  const { getArticle } = require('../../model/worry/worries');
+  return getArticle(articleId);
+}

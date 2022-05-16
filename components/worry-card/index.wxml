@@ -5,14 +5,14 @@
   data-goods="{{ articles }}"
 >
 	<view class="worry-card__main">
-		<view class="worry-card__body`">
+		<view class="worry-card__body">
 			<view class="worry-card__upper">
 				<view wx:if="{{ data.art_title }}" class="worry-card__title">
 					{{ data.art_title }}
 				</view>
-				<view wx:if="{{ data.art_content && !! data.art_content.length }}" class="worry-card__tags">
+				<!--<view wx:if="{{ data.art_content && !! data.art_content.length }}" class="worry-card__tags">
 					{{ data.art_content }}
-				</view>
+				</view>-->
 			</view>
 			<view class="worry-card__down">
 				<view class="worry-card__thumb" bind:tap="clickThumbHandle">

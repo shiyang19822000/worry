@@ -17,7 +17,6 @@ Component({
     data: {
       type: Object,
       observer(data) {
-        console.log("22222222222222222", data);
         if (!data) {
           return;
         }
@@ -95,7 +94,6 @@ Component({
     },
 
     init() {
-      console.log("4444444444444", this.data);
       const { thresholds, id } = this.properties;
       this.genIndependentID(id);
       if (thresholds && thresholds.length) {
