@@ -1,5 +1,4 @@
 import { fetchUserCenter } from '../../services/usercenter/fetchUsercenter';
-import Toast from 'tdesign-miniprogram/toast/index';
 
 const menuData = [
   [
@@ -144,69 +143,6 @@ Page({
     );
   },
 
-  onClickCell({ currentTarget }) {
-    const { type } = currentTarget.dataset;
-
-    switch (type) {
-      case 'address': {
-        wx.navigateTo({ url: '/pages/usercenter/address/list/index' });
-        break;
-      }
-      case 'service': {
-        this.openMakePhone();
-        break;
-      }
-      case 'help-center': {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: '你点击了帮助中心',
-          icon: '',
-          duration: 1000,
-        });
-        break;
-      }
-      case 'point': {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: '你点击了积分菜单',
-          icon: '',
-          duration: 1000,
-        });
-        break;
-      }
-      case 'coupon': {
-        wx.navigateTo({ url: '/pages/coupon/coupon-list/index' });
-        break;
-      }
-      default: {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: '未知跳转',
-          icon: '',
-          duration: 1000,
-        });
-        break;
-      }
-    }
-  },
-
-  jumpNav(e) {
-    const status = e.detail.tabType;
-
-    if (status === 0) {
-      wx.navigateTo({ url: '/pages/order/after-service-list/index' });
-    } else {
-      wx.navigateTo({ url: `/pages/order/order-list/index?status=${status}` });
-    }
-  },
-
-  jumpAllOrder() {
-    wx.navigateTo({ url: '/pages/order/order-list/index' });
-  },
-
   openMakePhone() {
     this.setData({ showMakePhone: true });
   },
@@ -219,15 +155,6 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.customerServiceInfo.servicePhone,
     });
-  },
-
-  gotoUserEditPage() {
-    const { currAuthStep } = this.data;
-    if (currAuthStep === 2) {
-      wx.navigateTo({ url: '/pages/usercenter/person-info/index' });
-    } else {
-      this.fetUseriInfoHandle();
-    }
   },
 
   getVersionInfo() {

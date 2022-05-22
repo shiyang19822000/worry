@@ -35,7 +35,7 @@
 				<view class="comments-title-wrap">
 				</view>
 				<view class="comment-item-content">
-					{{detail.art_publisher}}
+					作者: {{detail.art_publisher}}
 				</view>
 			</view>
 			<view class="comment-item-wrap">

@@ -79,7 +79,6 @@ Page({
     }
 
     this.setData({ articlesLoadStatus: 1 });
-
     const pageSize = this.articleListPagination.num;
     let pageIndex =
       this.privateData.tabIndex * pageSize + this.articleListPagination.index + 1;

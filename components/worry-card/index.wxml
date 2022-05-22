@@ -10,11 +10,9 @@
 				<view wx:if="{{ data.art_title }}" class="worry-card__title">
 					{{ data.art_title }}
 				</view>
-				<view class="worry-card__tags">
-					<view class="worry-card__tag">
-						精选
+					<view class="worry-card__publisher">
+						{{ data.art_publisher }}
 					</view>
-				</view>
 			</view>
 
 			<view class="worry-card__down">
