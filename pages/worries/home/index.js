@@ -1,6 +1,5 @@
 import { fetchHome } from '../../../services/worry/worryHome';
 import { fetchArticleList } from '../../../services/worry/fetchArticles';
-import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
@@ -103,36 +102,12 @@ Page({
     }
   },
 
-  listClickHandle(e) {
-    console.log('eeeeeeeeeeeeeeee=====',e)
-
-  },
-
   articleListClickHandle(e) {
     const { index } = e.detail;
-    const { articleId } = this.data.articleList[index];
-    console.log('1212112221====', this.data.articleList);
+    //const { articleId } = this.data.articleList[index].art_id;
+    let articleId = this.data.articleList[index].art_id;
     wx.navigateTo({
       url: `/pages/worries/article/index?articleId=${articleId}`,
-    });
-  },
-
-  articleListAddCartHandle() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '点击加入购物车',
-    });
-  },
-
-  navToSearchPage() {
-    wx.navigateTo({ url: '/pages/goods/search/index' });
-  },
-
-  navToActivityDetail({ detail }) {
-    const { index: promotionID = 0 } = detail || {};
-    wx.navigateTo({
-      url: `/pages/promotion-detail/index?promotion_id=${promotionID}`,
     });
   },
 });

@@ -7,20 +7,20 @@ Component({
       value: [],
     },
     id: {
-      type: String,
-      value: '',
+      type: Number,
+      value: 0,
       observer: (id) => {
         this.genArticleId(id);
       },
     },
-    thresholds: {
+    /*thresholds: {
       type: Array,
       value: [],
-    },
+    },*/
   },
 
   data: {
-    articleId: '',
+    // articleId: '',
   },
 
   lifetimes: {
@@ -32,7 +32,6 @@ Component({
   methods: {
     onClickArticles(e) {
       const { index } = e.currentTarget.dataset;
-      console.log('1010010110100===', e, index);
       this.triggerEvent('click', { ...e.detail, index });
     },
 
@@ -47,7 +46,7 @@ Component({
     },
 
     init() {
-      this.genArticleId(this.id || '');
+      this.genArticleId(this.id || 0);
     },
 
     genArticleId(id) {

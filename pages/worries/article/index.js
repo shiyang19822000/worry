@@ -1,4 +1,3 @@
-import Toast from 'tdesign-miniprogram/toast/index';
 import { cdnBase } from '../../../config/index';
 import { fetchArticle } from "../../../model/worry/worry";
 
@@ -17,6 +16,7 @@ const obj2Params = (obj = {}, encode = false) => {
 
 Page({
   data: {
+    content: '',
     articleId: 0,
     commentsList: [],
     commentsStatistics: {
@@ -32,22 +32,10 @@ Page({
     recLeftImg,
     recRightImg,
     detail: {},
-    goodsTabArray: [
-      {
-        name: '商品',
-        value: '', // 空字符串代表置顶
-      },
-      {
-        name: '详情',
-        value: 'goods-page',
-      },
-    ],
-    storeLogo: `${imgPrefix}common/store-logo.png`,
-    storeName: '云mall标准版旗舰店',
     jumpArray: [
       {
         title: '莫慌',
-        url: '/pages/worries/list/index',
+        url: '/pages/worries/home/index',
         iconName: 'home',
       },
       /*{
@@ -123,150 +111,6 @@ Page({
     });
   },
 
-  onPageScroll({ scrollTop }) {
-    const goodsTab = this.selectComponent('#goodsTab');
-    goodsTab && goodsTab.onScroll(scrollTop);
-  },
-
-  chooseSpecItem(e) {
-    const { specList } = this.data.details;
-    const { selectedSku, isAllSelectedSku } = e.detail;
-    if (!isAllSelectedSku) {
-      this.setData({
-        selectSkuSellsPrice: 0,
-      });
-    }
-    this.setData({
-      isAllSelectedSku,
-    });
-    this.getSkuItem(specList, selectedSku);
-  },
-
-  getSkuItem(specList, selectedSku) {
-    const { skuArray, primaryImage } = this.data;
-    const selectedSkuValues = this.getSelectedSkuValues(specList, selectedSku);
-    let selectedAttrStr = ` 件  `;
-    selectedSkuValues.forEach((item) => {
-      selectedAttrStr += `，${item.specValue}  `;
-    });
-    // eslint-disable-next-line array-callback-return
-    const skuItem = skuArray.filter((item) => {
-      let status = true;
-      (item.specInfo || []).forEach((subItem) => {
-        if (
-          !selectedSku[subItem.specId] ||
-          selectedSku[subItem.specId] !== subItem.specValueId
-        ) {
-          status = false;
-        }
-      });
-      if (status) return item;
-    });
-    this.selectSpecsName(selectedSkuValues.length > 0 ? selectedAttrStr : '');
-    if (skuItem) {
-      this.setData({
-        selectItem: skuItem,
-        selectSkuSellsPrice: skuItem.price || 0,
-      });
-    } else {
-      this.setData({
-        selectItem: null,
-        selectSkuSellsPrice: 0,
-      });
-    }
-    this.setData({
-      specImg: skuItem && skuItem.skuImage ? skuItem.skuImage : primaryImage,
-    });
-  },
-
-  // 获取已选择的sku名称
-  getSelectedSkuValues(skuTree, selectedSku) {
-    const normalizedTree = this.normalizeSkuTree(skuTree);
-    return Object.keys(selectedSku).reduce((selectedValues, skuKeyStr) => {
-      const skuValues = normalizedTree[skuKeyStr];
-      const skuValueId = selectedSku[skuKeyStr];
-      if (skuValueId !== '') {
-        const skuValue = skuValues.filter((value) => {
-          return value.specValueId === skuValueId;
-        })[0];
-        skuValue && selectedValues.push(skuValue);
-      }
-      return selectedValues;
-    }, []);
-  },
-
-  normalizeSkuTree(skuTree) {
-    const normalizedTree = {};
-    skuTree.forEach((treeItem) => {
-      normalizedTree[treeItem.specId] = treeItem.specValueList;
-    });
-    return normalizedTree;
-  },
-
-  selectSpecsName(selectSpecsName) {
-    if (selectSpecsName) {
-      this.setData({
-        selectedAttrStr: selectSpecsName,
-      });
-    } else {
-      this.setData({
-        selectedAttrStr: '',
-      });
-    }
-  },
-
-  addCart() {
-    const { isAllSelectedSku } = this.data;
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: isAllSelectedSku ? '点击加入购物车' : '请选择规格',
-      icon: '',
-      duration: 1000,
-    });
-  },
-
-  gotoBuy(type) {
-    const { isAllSelectedSku, buyNum } = this.data;
-    if (!isAllSelectedSku) {
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: '请选择规格',
-        icon: '',
-        duration: 1000,
-      });
-      return;
-    }
-    this.handlePopupHide();
-    const query = {
-      quantity: buyNum,
-      storeId: '1',
-      spuId: this.data.spuId,
-      goodsName: this.data.details.title,
-      skuId:
-        type === 1 ? this.data.skuList[0].skuId : this.data.selectItem.skuId,
-    };
-    let urlQueryStr = obj2Params({
-      goodsRequestList: JSON.stringify([query]),
-    });
-    urlQueryStr = urlQueryStr ? `?${urlQueryStr}` : '';
-    const path = `/pages/order/order-confirm/index${urlQueryStr}`;
-    wx.navigateTo({
-      url: path,
-    });
-  },
-
-  specsConfirm() {
-    const { buyType } = this.data;
-    if (buyType === 1) {
-      this.gotoBuy();
-    } else {
-      this.addCart();
-    }
-    // this.handlePopupHide();
-  },
-
   changeNum(e) {
     this.setData({
       buyNum: e.detail.buyNum,
@@ -279,13 +123,6 @@ Page({
     });
   },
 
-  promotionChange(e) {
-    const { index } = e.detail;
-    wx.navigateTo({
-      url: `/pages/promotion-detail/index?promotion_id=${index}`,
-    });
-  },
-
   showPromotionPopup() {
     this.setData({
       isShowPromotionPop: true,
@@ -293,140 +130,25 @@ Page({
   },
 
   async getDetail(articleId) {
-    console.log('=====articleId', articleId);
     const articleDetail = await fetchArticle(articleId);
     this.setData({
-      detail: articleDetail,
+      detail: articleDetail.data,
+      content: this.pretreatRichText(articleDetail.data.art_content),
     });
-    /*Promise.all([fetchGood(spuId), fetchActivityList()]).then((res) => {
-      const [details, activityList] = res;
-      const skuArray = [];
-      const {
-        skuList,
-        primaryImage,
-        isPutOnSale,
-        minSalePrice,
-        maxSalePrice,
-        maxLinePrice,
-        soldNum,
-      } = details;
-      skuList.forEach((item) => {
-        skuArray.push({
-          skuId: item.skuId,
-          quantity: item.stockInfo ? item.stockInfo.stockQuantity : 0,
-          specInfo: item.specInfo,
-        });
-      });
-      const promotionArray = [];
-      activityList.forEach((item) => {
-        promotionArray.push({
-          tag: item.promotionSubCode === 'MYJ' ? '满减' : '满折',
-          label: '满100元减99.9元',
-        });
-      });
-      this.setData({
-        details,
-        activityList,
-        isStock: details.spuStockQuantity > 0,
-        maxSalePrice: maxSalePrice ? parseInt(maxSalePrice) : 0,
-        maxLinePrice: maxLinePrice ? parseInt(maxLinePrice) : 0,
-        minSalePrice: minSalePrice ? parseInt(minSalePrice) : 0,
-        list: promotionArray,
-        skuArray: skuArray,
-        primaryImage,
-        soldout: isPutOnSale === 0,
-        soldNum,
-      });
-    });*/
   },
 
-  async getCommentsList() {
-    try {
-      const code = 'Success';
-      const data = await getGoodsDetailsCommentList();
-      const { homePageComments } = data;
-      if (code.toUpperCase() === 'SUCCESS') {
-        const nextState = {
-          commentsList: homePageComments.map((item) => {
-            return {
-              goodsSpu: item.spuId,
-              userName: item.userName || '',
-              commentScore: item.commentScore,
-              commentContent: item.commentContent || '用户未填写评价',
-              userHeadUrl: item.isAnonymity
-                ? this.anonymityAvatar
-                : item.userHeadUrl || this.anonymityAvatar,
-            };
-          }),
-        };
-        this.setData(nextState);
-      }
-    } catch (error) {
-      console.error('comments error:', error);
-    }
-  },
-
-  onShareAppMessage() {
-    // 自定义的返回信息
-    const { selectedAttrStr } = this.data;
-    let shareSubTitle = '';
-    if (selectedAttrStr.indexOf('件') > -1) {
-      const count = selectedAttrStr.indexOf('件');
-      shareSubTitle = selectedAttrStr.slice(count + 1, selectedAttrStr.length);
-    }
-    const customInfo = {
-      imageUrl: this.data.details.primaryImage,
-      title: this.data.details.title + shareSubTitle,
-      path: `/pages/goods/details/index?spuId=${this.data.spuId}`,
-    };
-    return customInfo;
-  },
-
-  /** 获取评价统计 */
-  async getCommentsStatistics() {
-    try {
-      const code = 'Success';
-      const data = await getGoodsDetailsCommentsCount();
-      if (code.toUpperCase() === 'SUCCESS') {
-        const {
-          badCount,
-          commentCount,
-          goodCount,
-          goodRate,
-          hasImageCount,
-          middleCount,
-        } = data;
-        const nextState = {
-          commentsStatistics: {
-            badCount: parseInt(`${badCount}`),
-            commentCount: parseInt(`${commentCount}`),
-            goodCount: parseInt(`${goodCount}`),
-            /** 后端返回百分比后数据但没有限制位数 */
-            goodRate: Math.floor(goodRate * 10) / 10,
-            hasImageCount: parseInt(`${hasImageCount}`),
-            middleCount: parseInt(`${middleCount}`),
-          },
-        };
-        this.setData(nextState);
-      }
-    } catch (error) {
-      console.error('comments statiistics error:', error);
-    }
-  },
-
-  /** 跳转到评价列表 */
-  navToCommentsListPage() {
-    wx.navigateTo({
-      url: `/pages/goods/comments/index?spuId=${this.data.spuId}`,
-    });
+  pretreatRichText(content) {
+    return content
+      .replace(/<img/gi, '<img style="max-width:100%;height:auto;display:block" ')
+      .replace(/section/g, 'div')
+      .replace(/\/section>/g, '\div>')
+    ;
   },
 
   onLoad(query) {
-    console.log('asdfafas ');
-    console.log('articleId99999999', query.articleId);
     this.setData({
-      articleId: articleId,
-    });
-    this.getDetail(articleId);
+      articleId: query.articleId,
+    })
+    this.getDetail(this.data.articleId);
   },
 });

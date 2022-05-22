@@ -20,7 +20,7 @@ function mockFetchHome() {
 
 /** 获取首页数据 */
 export function fetchHome() {
-  if (config.useMock) {
+  if (!config.useMock) {
     return mockFetchHome();
   }
 

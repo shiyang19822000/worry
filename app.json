@@ -1,10 +1,9 @@
 {
   "pages": [
-    "pages/troubles/home/index",
-    "pages/troubles/article/index",
     "pages/worries/home/index",
     "pages/worries/article/index",
-    "pages/home/home",
+    "pages/troubles/home/index",
+    "pages/troubles/article/index",
     "pages/usercenter/index",
     "pages/usercenter/person-info/index",
     "pages/usercenter/address/list/index",
@@ -42,20 +41,8 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/troubles/home/index",
-        "text": "别闹"
-      },
-      {
         "pagePath": "pages/worries/home/index",
         "text": "莫慌"
-      },
-      {
-        "pagePath": "pages/home/home",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/goods/category/index",
-        "text": "分类"
       },
       {
         "pagePath": "pages/usercenter/index",

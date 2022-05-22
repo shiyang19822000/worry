@@ -1,37 +1,9 @@
 <view class="worry-detail-page">
 	<view class="worry-head">
 		<view class="worry-info">
-			<!--<view class="worry-number">
-				<view class="worry-price">
-					<price
-					  wr-class="class-worry-price"
-					  symbol-class="class-worry-symbol"
-					  price="{{minSalePrice}}"
-					  type="lighter"
-					/>
-					<view class="worry-price-up">起</view>
-					<price wr-class="class-worry-del" price="{{maxLinePrice}}" type="delthrough" />
-				</view>
-				<view class="sold-num">已售{{soldNum}}</view>
-			</view>
-			<view wx:if="{{activityList.length > 0}}" class="worry-activity" bindtap="showPromotionPopup">
-				<view class="tags-container">
-					<view
-					  wx:for="{{activityList}}"
-					  data-promotionId="{{item.promotionId}}"
-					  wx:key="index"
-					  wx:if="{{index<4}}"
-					>
-						<view class="worry-activity-tag">{{item.tag}}</view>
-					</view>
-				</view>
-				<view class="activity-show">
-					<view class="activity-show-text">领劵</view>
-					<t-icon name="chevron-right" size="42rpx" />
-				</view>
-			</view>-->
+
 			<view class="worry-title">
-				<view class="worry-name">{{details.title}}</view>
+				<view class="worry-name">{{detail.art_title}}</view>
 				<view class="worry-tag">
 					<t-button open-type="share" t-class="shareBtn">
 						<view class="btn-icon">
@@ -44,184 +16,35 @@
 			<view class="worry">{{intro}}</view>
 		</view>
 
-		<t-swiper
-				wx:if="{{details.images.length > 0}}"
-				t-class="t-swiper"
-				current="{{current}}"
-				autoplay="{{autoplay}}"
-				duration="{{duration}}"
-				interval="{{interval}}"
-				navigation="{{navigation}}"
-		>
-			<t-swiper-item
-					wx:for="{{details.images}}"
-					wx:for-item="item"
-					wx:for-index="index"
-					wx:key="index"
-			>
-				<t-image src="{{item}}" t-class="swipe-img" />
-			</t-swiper-item>
-		</t-swiper>
+		<t-image wx:if="{{detail.art_illustrated}}" src="{{detail.art_illustrated}}" t-class="swipe-img t-swiper" />
 
-		<!--<view class="spu-select" bindtap="showSkuSelectPopup">
-			<view class="label">已选</view>
-			<view class="content">
-				<view class="{{!selectedAttrStr ? 'tintColor' : ''}}">
-					{{selectedAttrStr ? buyNum : ''}}{{selectedAttrStr || '请选择'}}
-				</view>
-				<t-icon name="chevron-right" size="40rpx" color="#BBBBBB" />
-			</view>
-		</view>-->
-
-
-		<view wx:if="{{ commentsStatistics.commentCount > 0 }}" class="comments-wrap">
+		<view class="comments-wrap">
 			<view class="comments-head" bindtap="navToCommentsListPage">
 				<view class="comments-title-wrap">
-					<view class="comments-title-label">文章内容</view>
+				</view>
+			</view>
+			<view class="comment-item-wrap">
+				<view class="comment-item-content">
+					<rich-text nodes="{{content}}"></rich-text>
 				</view>
 			</view>
 		</view>
 
-		<view wx:if="{{ commentsStatistics.commentCount > 0 }}" class="comments-wrap">
+		<view class="comments-wrap">
 			<view class="comments-head" bindtap="navToCommentsListPage">
 				<view class="comments-title-wrap">
-					<view class="comments-title-label">评论</view>
-					<view class="comments-title-count">
-						({{ commentsStatistics.commentCount }})
-					</view>
-				</view>
-				<view class="comments-rate-wrap">
-					<view class="comments-good-rate">更多</view>
-					<t-icon name="chevron-right" size="40rpx" color="#BBBBBB" />
-				</view>
-			</view>
-			<view
-			  class="comment-item-wrap"
-			  wx:for="{{ commentsList }}"
-			  wx:for-item="commentItem"
-			  wx:key="goodsSpu"
-			>
-				<view class="comment-item-head">
-					<t-image src="{{commentItem.userHeadUrl}}" t-class="comment-item-avatar" />
-					<view class="comment-head-right">
-						<view class="comment-username">{{commentItem.userName}}</view>
-						<t-rate
-						  value="{{ commentItem.commentScore }}"
-						  count="{{5}}"
-						  variant="filled"
-						  color="#FFC51C"
-						/>
-					</view>
 				</view>
 				<view class="comment-item-content">
-					{{commentItem.commentContent}}
+					{{detail.art_publisher}}
 				</view>
 			</view>
-		</view>
-	</view>
-	<!--<view class="desc-content">
-		<view class="desc-content__title" wx:if="{{details.desc.length > 0}}">
-			<t-image t-class="img" src="{{recLeftImg}}" />
-			<span class="desc-content__title&#45;&#45;text">详情介绍</span>
-			<t-image t-class="img" src="{{recRightImg}}" />
-		</view>
-		<view wx:if="{{details.desc.length > 0}}" wx:for="{{details.desc}}" wx:key="index">
-			<t-image t-class="desc-content__img" src="{{item}}" mode="widthFix" />
-		</view>
-
-
-		<view wx:if="{{ commentsStatistics.commentCount > 0 }}" class="comments-wrap">
-			<view class="comments-head" bindtap="navToCommentsListPage">
-				<view class="comments-title-wrap">
-					<view class="comments-title-label">商品评价</view>
-					<view class="comments-title-count">
-						({{ commentsStatistics.commentCount }})
-					</view>
-				</view>
-				<view class="comments-rate-wrap">
-					<view class="comments-good-rate">{{commentsStatistics.goodRate}}% 好评</view>
-					<t-icon name="chevron-right" size="40rpx" color="#BBBBBB" />
-				</view>
-			</view>
-			<view
-					class="comment-item-wrap"
-					wx:for="{{ commentsList }}"
-					wx:for-item="commentItem"
-					wx:key="worrySpu"
-			>
-				<view class="comment-item-head">
-					<t-image src="{{commentItem.userHeadUrl}}" t-class="comment-item-avatar" />
-					<view class="comment-head-right">
-						<view class="comment-username">{{commentItem.userName}}</view>
-						<t-rate
-								value="{{ commentItem.commentScore }}"
-								count="{{5}}"
-								variant="filled"
-								color="#FFC51C"
-						/>
-					</view>
-				</view>
+			<view class="comment-item-wrap">
 				<view class="comment-item-content">
-					{{commentItem.commentContent}}
+					<rich-text nodes="{{detail.art_declaration}}"></rich-text>
 				</view>
 			</view>
 		</view>
 
-	</view>-->
-
-	<view class="worry-bottom-operation">
-		<buy-bar
-		  jumpArray="{{jumpArray}}"
-		  soldout="{{soldout}}"
-		  isStock="{{isStock}}"
-		  shopCartNum="{{cartNum}}"
-		  buttonType="{{buttonType}}"
-		  bind:toAddCart="toAddCart"
-		  bind:toNav="toNav"
-		  bind:toBuyNow="buyItNow"
-		  class="worry-details-card"
-		/>
 	</view>
-
-	<worry-specs-popup
-	  id="goodsSpecsPopup"
-	  show="{{isSpuSelectPopupShow}}"
-	  title="{{details.title || ''}}"
-	  src="{{specImg ? specImg : primaryImage}}"
-	  specList="{{details.specList || []}}"
-	  skuList="{{skuArray}}"
-	  limitBuyInfo="{{details.limitInfo[0].text || ''}}"
-	  bind:closeSpecsPopup="handlePopupHide"
-	  bind:change="chooseSpecItem"
-	  bind:changeNum="changeNum"
-	  bind:addCart="addCart"
-	  bind:buyNow="gotoBuy"
-	  bind:specsConfirm="specsConfirm"
-	  isStock="{{isStock}}"
-	  outOperateStatus="{{outOperateStatus}}"
-	>
-		<view slot="worry-price">
-			<view class="popup-sku__price">
-				<price
-				  wx:if="{{!isAllSelectedSku || (!promotionSubCode && isAllSelectedSku)}}"
-				  price="{{selectSkuSellsPrice ? selectSkuSellsPrice : minSalePrice }}"
-				  wr-class="popup-sku__price-num"
-				  symbol-class="popup-sku__price-symbol"
-				/>
-				<price
-				  wx:if="{{selectSkuSellsPrice === 0 && minSalePrice !== maxSalePrice && !isAllSelectedSku}}"
-				  price="{{maxSalePrice}}"
-				  wr-class="popup-sku__price-del"
-				  type="delthrough"
-				/>
-			</view>
-		</view>
-	</worry-specs-popup>
-	<promotion-popup
-	  list="{{list}}"
-	  bind:closePromotionPopup="closePromotionPopup"
-	  show="{{isShowPromotionPop}}"
-	  bind:promotionChange="promotionChange"
-	/>
 </view>
-<t-toast id="t-toast" />
+

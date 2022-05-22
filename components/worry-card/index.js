@@ -4,36 +4,36 @@ Component({
   },
 
   properties: {
-    id: {
+    /*id: {
       type: String,
       value: '',
       observer(id) {
-        this.genIndependentID(id);
+        this.genArticleId(id);
         if (this.properties.thresholds?.length) {
           this.createIntersectionObserverHandle();
         }
       },
-    },
+    },*/
     data: {
       type: Object,
       observer(data) {
         if (!data) {
           return;
         }
-        let isValidityLinePrice = true;
+        // let isValidityLinePrice = true;
         // if (data.originPrice && data.price && data.originPrice < data.price) {
         //   isValidityLinePrice = false;
         // }
-        isValidityLinePrice = false;
-        //this.setData({ articles: data, isValidityLinePrice });
+        // isValidityLinePrice = false;
+        // this.setData({ articles: data, isValidityLinePrice });
       },
     },
-    currency: {
+    /*currency: {
       type: String,
       value: '¥',
-    },
+    },*/
 
-    thresholds: {
+    /*thresholds: {
       type: Array,
       value: [],
       observer(thresholds) {
@@ -43,13 +43,13 @@ Component({
           this.clearIntersectionObserverHandle();
         }
       },
-    },
+    },*/
   },
 
   data: {
-    independentID: '',
-    //articles: { id: '' },
-    isValidityLinePrice: false,
+    // articleId: '',
+    // article: { id: '' },
+    // isValidityLinePrice: false,
   },
 
   lifetimes: {
@@ -65,11 +65,11 @@ Component({
 
   methods: {
     clickHandle() {
-      this.triggerEvent('click', { goods: this.data.goods });
+      this.triggerEvent('click', { article: this.properties.data });
     },
 
     clickThumbHandle() {
-      this.triggerEvent('thumb', { goods: this.data.goods });
+      this.triggerEvent('thumb', { article: this.properties.data });
     },
 
     addCartHandle(e) {
@@ -79,26 +79,26 @@ Component({
         ...e.detail,
         id,
         cardID,
-        goods: this.data.goods,
+        article: this.data.article,
       });
     },
 
-    genIndependentID(id) {
-      let independentID;
+    genArticleId(id) {
+      let articleId;
       if (id) {
-        independentID = id;
+        articleId = id;
       } else {
-        independentID = `goods-card-${~~(Math.random() * 10 ** 8)}`;
+        articleId = `worry-card-${~~(Math.random() * 10 ** 8)}`;
       }
-      this.setData({ independentID });
+      this.setData({ articleId });
     },
 
     init() {
-      const { thresholds, id } = this.properties;
-      this.genIndependentID(id);
-      if (thresholds && thresholds.length) {
-        this.createIntersectionObserverHandle();
-      }
+      const { data, articleId } = this.properties;
+      this.genArticleId(data.art_id);
+      //if (thresholds && thresholds.length) {
+        //this.createIntersectionObserverHandle();
+      //}
     },
 
     clear() {
@@ -108,7 +108,9 @@ Component({
     intersectionObserverContext: null,
 
     createIntersectionObserverHandle() {
-      if (this.intersectionObserverContext || !this.data.independentID) {
+      console.log('createIntersectionObserverHandle11111111');
+      if (this.intersectionObserverContext || !this.properties.data.art_id) {
+        console.log('createIntersectionObserverHandle');
         return;
       }
       this.intersectionObserverContext = this.createIntersectionObserver({
@@ -116,7 +118,7 @@ Component({
       }).relativeToViewport();
 
       this.intersectionObserverContext.observe(
-        `#${this.data.independentID}`,
+        `#${this.properties.data.art_id}`,
         (res) => {
           this.intersectionObserverCB(res);
         },
@@ -125,7 +127,7 @@ Component({
 
     intersectionObserverCB() {
       this.triggerEvent('ob', {
-        goods: this.data.goods,
+        article: this.properties.data,
         context: this.intersectionObserverContext,
       });
     },

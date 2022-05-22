@@ -5,15 +5,10 @@ export default [
     url: 'pages/worries/home/index',
   },
   // {
-  //   icon: 'home',
-  //   text: '莫慌',
-  //   url: 'pages/home/home',
+  //   icon: 'sort',
+  //   text: '别闹',
+  //   url: 'pages/troubles/home/index',
   // },
-  {
-    icon: 'sort',
-    text: '别闹',
-    url: 'pages/troubles/home/index',
-  },
   // {
   //   icon: 'cart',
   //   text: '吐槽',

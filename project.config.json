@@ -58,32 +58,26 @@
     "miniprogram": {
       "list": [
         {
-          "name": "别闹1",
+          "name": "别闹",
           "pathName": "pages/trouble/list/index",
           "query": "",
           "scene": null
         },
         {
-          "name": "别闹1",
+          "name": "别闹",
           "pathName": "pages/trouble/article/index",
           "query": "",
           "scene": null
         },
         {
-          "name": "莫慌1",
+          "name": "莫慌",
           "pathName": "pages/worries/list/index",
           "query": "",
           "scene": null
         },
         {
-          "name": "莫慌1",
+          "name": "莫慌",
           "pathName": "pages/worries/article/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "首页入口",
-          "pathName": "pages/home/home",
           "query": "",
           "scene": null
         },

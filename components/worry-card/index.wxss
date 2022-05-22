@@ -66,8 +66,8 @@
   color: #333;
   font-weight: 400;
   display: -webkit-box;
-  height: 72rpx;
-  -webkit-box-orient: vertical;
+  height: 102rpx;
+  /*-webkit-box-orient: vertical;*/
   -webkit-line-clamp: 2;
   overflow: hidden;
   word-break: break-word;
