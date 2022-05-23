@@ -10,9 +10,9 @@
 				<view wx:if="{{ data.art_title }}" class="worry-card__title">
 					{{ data.art_title }}
 				</view>
-					<view class="worry-card__publisher">
-						{{ data.art_publisher }}
-					</view>
+				<view class="worry-card__publisher">
+					{{ data.art_publisher }}
+				</view>
 			</view>
 
 			<view class="worry-card__down">

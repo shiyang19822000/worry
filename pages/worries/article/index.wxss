@@ -350,7 +350,7 @@ page {
 .comment-item-wrap .comment-item-content {
   margin-top: 20rpx;
   color: #333333;
-  line-height: 40rpx;
+  line-height: 70rpx;
   font-size: 28rpx;
   font-weight: 400;
 }
