@@ -6,7 +6,7 @@
 >
 	<view class="worry-card__main">
 		<view class="worry-card__body">
-			<view class="worry-card__upper">
+			<view class="worry-card__left">
 				<view wx:if="{{ data.art_title }}" class="worry-card__title">
 					{{ data.art_title }}
 				</view>
@@ -15,14 +15,14 @@
 				</view>
 			</view>
 
-			<view class="worry-card__down">
+			<view class="worry-card__right">
 				<view class="worry-card__thumb">
 					<t-image
-							wx:if="{{ !!data.art_thumbnail }}"
-							t-class="worry-card__img"
-							src="{{ data.art_thumbnail }}"
-							mode="aspectFill"
-							lazy-load
+						wx:if="{{ !!data.art_thumbnail }}"
+						t-class="worry-card__img"
+						src="{{ data.art_thumbnail }}"
+						mode="aspectFill"
+						lazy-load
 					/>
 				</view>
 			</view>

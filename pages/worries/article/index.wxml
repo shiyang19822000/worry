@@ -35,11 +35,11 @@
 				<view class="comments-title-wrap">
 				</view>
 				<view class="comment-item-content">
-					作者: {{detail.art_publisher}}
+					{{detail.art_publisher}}
 				</view>
 			</view>
 			<view class="comment-item-wrap">
-				<view class="comment-item-content">
+				<view class="comment-item-declaration">
 					<rich-text nodes="{{detail.art_declaration}}"></rich-text>
 				</view>
 			</view>
