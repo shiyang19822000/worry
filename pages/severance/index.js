@@ -38,6 +38,11 @@ Page({
       q11A02: false,
       isSelected: false,
     },
+    programs: {
+      n: "",
+      n1: "",
+      n2: "",
+    },
     compensation: "",
   },
 
@@ -54,7 +59,20 @@ Page({
   },
 
   init() {
+    this.loadPrograms();
     this.loadPage();
+  },
+
+  async loadPrograms() {
+    let p = this.data.programs;
+    const n = await fetchCompensation(3);
+    p.n = n.cpns_content;
+    const n1 = await fetchCompensation(1);
+    p.n1 = n1.cpns_content;
+    const n2 = await fetchCompensation(2);
+    p.n2 = n2.cpns_content;
+
+    this.setData({ programs: p });
   },
 
   loadPage() {
@@ -479,19 +497,21 @@ Page({
     this.setData({ compensation: "" });
     let plan = calculate(this.data.store);
     if (plan === "n") {
-      const n = await fetchCompensation(3);
+      // const n = await fetchCompensation(3);
       // this.setData({ compensation: this.data.contents[0].compensations.n });
-      this.setData({ compensation: n.cpns_content });
+      this.setData({ compensation: this.data.programs.n });
     }
     if (plan === "n1") {
       const n1 = await fetchCompensation(1);
       // this.setData({ compensation: this.data.contents[0].compensations.n1 });
-      this.setData({ compensation: n1.cpns_content });
+      // this.setData({ compensation: n1.cpns_content });
+      this.setData({ compensation: this.data.programs.n1 });
     }
     if (plan === "n2") {
       const n2 = await fetchCompensation(2);
       // this.setData({ compensation: this.data.contents[0].compensations.n2 });
-      this.setData({ compensation: n2.cpns_content });
+      // this.setData({ compensation: n2.cpns_content });
+      this.setData({ compensation: this.data.programs.n2 });
     }
     // console.log("calculator", this.data.store);
   },
