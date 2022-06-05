@@ -279,6 +279,12 @@ page {
   height: 300rpx !important;
 }
 
+.severance-detail-page .severance-head {
+}
+
+.severance-detail-page .severance-b {
+}
+
 .t-toast__content {
   z-index: 12000 !important;
 }
@@ -299,6 +305,8 @@ page {
 .comments-wrap .comments-head .comments-title-wrap {
   display: flex;
   font-size: 32rpx;
+  line-height: 80rpx;
+  font-weight: bold;
 }
 
 .comments-title-label,
@@ -390,6 +398,9 @@ page {
 }
 
 .comments-title-wrap-q {
+  line-height: 80rpx;
+  font-weight: bold;
+  font-size: 28rpx;
   /*margin-top: 20rpx;*/
   /*padding: 0rpx;*/
   /*display: flex;*/
@@ -416,7 +427,7 @@ page {
   /*border: 1rpx solid #733939;*/
 }
 
-.answer-check-q3 {
+.answer-check-q {
   padding: 10rpx 0rpx 20rpx 0rpx;
 }
 

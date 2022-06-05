@@ -1,5 +1,7 @@
 <view class="severance-detail-page">
+
   <view class="severance-head">
+
     <view class="severance-info">
 
       <view class="severance-title">
@@ -13,9 +15,14 @@
           </t-button>
         </view>
       </view>
+
     </view>
 
-    <t-image src="{{image}}" t-class="swipe-img t-swiper" />
+    <t-image src="{{content.image}}" t-class="swipe-img t-swiper" />
+
+  </view>
+
+  <view class="severance-body">
 
     <view class="comments-wrap">
       <view class="comments-head">
@@ -26,7 +33,6 @@
     </view>
 
     <!-- ------ Q01 ------ -->
-    <!--
     <view class="comments-wrap-q">
       <view class="comments-head-q">
         <view class="comments-title-wrap-q">
@@ -34,19 +40,62 @@
         </view>
         <view class="comment-item-content-q">
 
-          <view class="section">
-            <view class="section__title">日期选择器</view>
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-              <view class="picker">
-                当前选择: {{date}}
-              </view>
-            </picker>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q01A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q01A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ1A1"
+            />
+            <view class="answer-check-item-text-q">
+              正在医疗期间
+            </view>
+          </view>
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q01A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q01A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ1A2"
+            />
+            <view class="answer-check-item-text-q">
+              在本单位患有职业病，并丧失或部分丧失劳动能力
+            </view>
+          </view>
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q01A03 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q01A03 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ1A3"
+            />
+            <view class="answer-check-item-text-q">
+              从事接触职业病危害作业的劳动者未进行离岗前职业健康检查，或者疑似职业病病人在诊断或者医学观察期间的
+            </view>
+          </view>
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q01A04 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q01A04 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ1A4"
+            />
+            <view class="answer-check-item-text-q">
+              否
+            </view>
           </view>
 
         </view>
       </view>
     </view>
-    -->
+
     <!-- ------ Q02 ------ -->
     <view class="comments-wrap-q">
       <view class="comments-head-q">
@@ -54,6 +103,46 @@
           {{content.survey.q2}}
         </view>
         <view class="comment-item-content-q">
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q02A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q02A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ2A1"
+            />
+            <view class="answer-check-item-text-q">
+              正在医疗期间
+            </view>
+          </view>
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q02A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q02A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ2A2"
+            />
+            <view class="answer-check-item-text-q">
+              在本单位工伤，并丧失或部分丧失劳动力
+            </view>
+          </view>
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q02A03 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q02A03 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ2A3"
+            />
+            <view class="answer-check-item-text-q">
+              否
+            </view>
+          </view>
+
         </view>
       </view>
     </view>
@@ -65,30 +154,33 @@
           {{content.survey.q3}}
         </view>
         <view class="comment-item-content-q">
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q03A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q03A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ3A1"
             />
             <view class="answer-check-item-text-q">
-              男
+              是
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q03A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q03A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ3A2"
             />
             <view class="answer-check-item-text-q">
-              女
+              否
             </view>
           </view>
+
         </view>
       </view>
     </view>
@@ -100,42 +192,46 @@
           {{content.survey.q4}}
         </view>
         <view class="comment-item-content-q">
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q04A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q04A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ4A1"
             />
             <view class="answer-check-item-text-q">
-              正在医疗期间
+              破产、解散
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q04A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q04A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ4A2"
             />
             <view class="answer-check-item-text-q">
-              在本单位患有职业病，并丧失或部分丧失劳动能力
+              经济性裁员
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q04A03 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q04A03 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ4A3"
             />
             <view class="answer-check-item-text-q">
-              从事接触职业病危害作业的劳动者未进行离岗前职业健康检查，或者疑似职业病病人在诊断或者医学观察期间的
+              否
             </view>
           </view>
+
         </view>
       </view>
     </view>
@@ -147,30 +243,33 @@
           {{content.survey.q5}}
         </view>
         <view class="comment-item-content-q">
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q05A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q05A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ5A1"
             />
             <view class="answer-check-item-text-q">
-              正在医疗期间
+              是
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q05A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q05A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ5A2"
             />
             <view class="answer-check-item-text-q">
-              在本单位工伤，并丧失或部分丧失劳动力
+              否
             </view>
           </view>
+
         </view>
       </view>
     </view>
@@ -185,10 +284,10 @@
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q06A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q06A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ6A1"
             />
             <view class="answer-check-item-text-q">
               是
@@ -197,10 +296,10 @@
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q06A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q06A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ6A2"
             />
             <view class="answer-check-item-text-q">
               否
@@ -217,30 +316,46 @@
           {{content.survey.q7}}
         </view>
         <view class="comment-item-content-q">
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q07A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q07A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ7A1"
             />
             <view class="answer-check-item-text-q">
-              破产、解散
+              用人单位提前30日以书面形式通知本人
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q07A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q07A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ7A2"
             />
             <view class="answer-check-item-text-q">
-              经济性裁员
+              用人单位没有提前30日以书面形式通知本人
             </view>
           </view>
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q07A03 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q07A03 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ7A3"
+            />
+            <view class="answer-check-item-text-q">
+              否
+            </view>
+          </view>
+
         </view>
       </view>
     </view>
@@ -252,30 +367,46 @@
           {{content.survey.q8}}
         </view>
         <view class="comment-item-content-q">
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q08A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q08A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ8A1"
             />
             <view class="answer-check-item-text-q">
-              是
+              用人单位提前30日以书面形式通知劳动者本人
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q08A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q08A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ8A2"
+            />
+            <view class="answer-check-item-text-q">
+              用人单位没有提前30日以书面形式通知劳动者本人
+            </view>
+          </view>
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q08A03 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q08A03 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ8A3"
             />
             <view class="answer-check-item-text-q">
               否
             </view>
           </view>
+
         </view>
       </view>
     </view>
@@ -287,30 +418,46 @@
           {{content.survey.q9}}
         </view>
         <view class="comment-item-content-q">
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q09A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q09A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ9A1"
             />
             <view class="answer-check-item-text-q">
-              是
+              用人单位提前30日以书面形式通知劳动者本人
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q09A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q09A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ9A2"
+            />
+            <view class="answer-check-item-text-q">
+              用人单位没有提前30日以书面形式通知劳动者本人。
+            </view>
+          </view>
+
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.q09A03 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q09A03 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ9A3"
             />
             <view class="answer-check-item-text-q">
               否
             </view>
           </view>
+
         </view>
       </view>
     </view>
@@ -322,30 +469,33 @@
           {{content.survey.q10}}
         </view>
         <view class="comment-item-content-q">
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q10A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q10A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ10A1"
             />
             <view class="answer-check-item-text-q">
-              用人单位提前30日以书面形式通知本人
+              是
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q10A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q10A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ10A2"
             />
             <view class="answer-check-item-text-q">
-              用人单位没有提前30日以书面形式通知本人
+              否
             </view>
           </view>
+
         </view>
       </view>
     </view>
@@ -357,104 +507,36 @@
           {{content.survey.q11}}
         </view>
         <view class="comment-item-content-q">
-          <view class="answer-check-item-q">
-            <t-icon
-              size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
-            />
-            <view class="answer-check-item-text-q">
-              用人单位提前30日以书面形式通知劳动者本人
-            </view>
-          </view>
-          <view class="answer-check-item-q">
-            <t-icon
-              size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
-            />
-            <view class="answer-check-item-text-q">
-              用人单位没有提前30日以书面形式通知劳动者本人
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
 
-    <!-- ------ Q12 ------ -->
-    <view class="comments-wrap-q">
-      <view class="comments-head-q">
-        <view class="comments-title-wrap-q">
-          {{content.survey.q12}}
-        </view>
-        <view class="comment-item-content-q">
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
-            />
-            <view class="answer-check-item-text-q">
-              用人单位提前30日以书面形式通知劳动者本人
-            </view>
-          </view>
-          <view class="answer-check-item-q">
-            <t-icon
-              size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
-            />
-            <view class="answer-check-item-text-q">
-              用人单位没有提前30日以书面形式通知劳动者本人
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <!-- ------ Q13 ------ -->
-    <view class="comments-wrap-q">
-      <view class="comments-head-q">
-        <view class="comments-title-wrap-q">
-          {{content.survey.q13}}
-        </view>
-        <view class="comment-item-content-q">
-          <view class="answer-check-item-q">
-            <t-icon
-              size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q11A01 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q11A01 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ11A1"
             />
             <view class="answer-check-item-text-q">
               是
             </view>
           </view>
+
           <view class="answer-check-item-q">
             <t-icon
               size="40rpx"
-              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
-              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
-              class="answer-check-q3"
-              bindtap="selectAnswerQ3"
+              color="{{store.q11A02 ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.q11A02 ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q"
+              bindtap="selectAnswerQ11A2"
             />
             <view class="answer-check-item-text-q">
               否
             </view>
           </view>
+
         </view>
       </view>
     </view>
-
 
     <!-- ------ Compute ------ -->
     <view class="comments-wrap">
@@ -463,12 +545,11 @@
         </view>
         <view class="comment-item-content">
         </view>
-        <view class="submit-btn">
-          赔偿方案计算
+        <view class="submit-btn" bindtap="reset">
+          重新计算
         </view>
       </view>
     </view>
-
 
     <!-- ------ Result ------ -->
     <view class="comments-wrap">
@@ -478,14 +559,11 @@
       </view>
       <view class="comment-item-wrap">
         <view class="comment-item-content">
-          <rich-text nodes="{{content}}"></rich-text>
-          111111111111111111111
-          222222222222222222222
-
+          <rich-text nodes="{{compensation}}"></rich-text>
         </view>
       </view>
     </view>
 
   </view>
-</view>
 
+</view>
