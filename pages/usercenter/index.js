@@ -1,8 +1,8 @@
-import { fetchUserCenter } from '../../services/usercenter/fetchUsercenter';
+import { fetchUserCenter } from "../../services/usercenter/fetchUsercenter";
 
 const menuData = [
   [
-/*    {
+    /*    {
       title: '收货地址',
       tit: '',
       url: '',
@@ -23,53 +23,53 @@ const menuData = [
   ],
   [
     {
-      title: '帮助中心',
-      tit: '',
-      url: '',
-      type: 'help-center',
+      title: "帮助中心",
+      tit: "",
+      url: "",
+      type: "help-center",
     },
     {
-      title: '客服热线',
-      tit: '',
-      url: '',
-      type: 'service',
-      icon: 'service',
+      title: "客服热线",
+      tit: "",
+      url: "",
+      type: "service",
+      icon: "service",
     },
   ],
 ];
 
 const orderTagInfos = [
   {
-    title: '待付款',
-    iconName: 'wallet',
+    title: "待付款",
+    iconName: "wallet",
     orderNum: 0,
     tabType: 5,
     status: 1,
   },
   {
-    title: '待发货',
-    iconName: 'deliver',
+    title: "待发货",
+    iconName: "deliver",
     orderNum: 0,
     tabType: 10,
     status: 1,
   },
   {
-    title: '待收货',
-    iconName: 'package',
+    title: "待收货",
+    iconName: "package",
     orderNum: 0,
     tabType: 40,
     status: 1,
   },
   {
-    title: '待评价',
-    iconName: 'comment',
+    title: "待评价",
+    iconName: "comment",
     orderNum: 0,
     tabType: 60,
     status: 1,
   },
   {
-    title: '退款/售后',
-    iconName: 'exchang',
+    title: "退款/售后",
+    iconName: "exchang",
     orderNum: 0,
     tabType: 0,
     status: 1,
@@ -79,16 +79,16 @@ const orderTagInfos = [
 const getDefaultData = () => ({
   showMakePhone: false,
   userInfo: {
-    avatarUrl: '',
-    nickName: '正在登录...',
-    phoneNumber: '',
+    avatarUrl: "",
+    nickName: "正在登录...",
+    phoneNumber: "",
   },
   menuData,
   orderTagInfos,
   customerServiceInfo: {},
   currAuthStep: 1,
   showKefu: true,
-  versionNo: '',
+  versionNo: "",
 });
 
 Page({
@@ -102,6 +102,7 @@ Page({
     this.getTabBar().init();
     this.init();
   },
+
   onPullDownRefresh() {
     this.init();
   },
@@ -139,7 +140,7 @@ Page({
           currAuthStep: 2,
         });
         wx.stopPullDownRefresh();
-      },
+      }
     );
   },
 
@@ -161,7 +162,7 @@ Page({
     const versionInfo = wx.getAccountInfoSync();
     const { version, envVersion = __wxConfig } = versionInfo.miniProgram;
     this.setData({
-      versionNo: envVersion === 'release' ? version : envVersion,
+      versionNo: envVersion === "release" ? version : envVersion,
     });
   },
 });

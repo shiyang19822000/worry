@@ -1,6 +1,5 @@
-import { cdnBase } from '../../../config/index';
+import { cdnBase } from "../../../config/index";
 import { fetchArticle } from "../../../model/worry/worry";
-
 
 const imgPrefix = `${cdnBase}/`;
 const recLeftImg = `${imgPrefix}common/rec-left.png`;
@@ -8,15 +7,15 @@ const recRightImg = `${imgPrefix}common/rec-right.png`;
 const obj2Params = (obj = {}, encode = false) => {
   const result = [];
   Object.keys(obj).forEach((key) =>
-    result.push(`${key}=${encode ? encodeURIComponent(obj[key]) : obj[key]}`),
+    result.push(`${key}=${encode ? encodeURIComponent(obj[key]) : obj[key]}`)
   );
 
-  return result.join('&');
+  return result.join("&");
 };
 
 Page({
   data: {
-    content: '',
+    content: "",
     articleId: 0,
     commentsList: [],
     commentsStatistics: {
@@ -34,9 +33,9 @@ Page({
     detail: {},
     jumpArray: [
       {
-        title: '莫慌',
-        url: '/pages/worries/home/index',
-        iconName: 'home',
+        title: "莫慌",
+        url: "/pages/worries/home/index",
+        iconName: "home",
       },
       /*{
         title: '分享',
@@ -50,10 +49,10 @@ Page({
     soldout: false,
     buttonType: 1,
     buyNum: 1,
-    selectedAttrStr: '',
+    selectedAttrStr: "",
     skuArray: [],
-    primaryImage: '',
-    specImg: '',
+    primaryImage: "",
+    specImg: "",
     isSpuSelectPopupShow: false,
     isAllSelectedSku: false,
     buyType: 0,
@@ -64,8 +63,8 @@ Page({
     minSalePrice: 0,
     maxSalePrice: 0,
     list: [],
-    spuId: '',
-    navigation: { type: 'fraction' },
+    spuId: "",
+    navigation: { type: "fraction" },
     current: 0,
     autoplay: true,
     duration: 500,
@@ -139,16 +138,18 @@ Page({
 
   pretreatRichText(content) {
     return content
-      .replace(/<img/gi, '<img style="max-width:100%;height:auto;display:block" ')
-      .replace(/section/g, 'div')
-      .replace(/\/section>/g, '\div>')
-    ;
+      .replace(
+        /<img/gi,
+        '<img style="max-width:100%;height:auto;display:block" '
+      )
+      .replace(/section/g, "div")
+      .replace(/\/section>/g, "div>");
   },
 
   onLoad(query) {
     this.setData({
       articleId: query.articleId,
-    })
+    });
     this.getDetail(this.data.articleId);
   },
 });

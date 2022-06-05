@@ -1,0 +1,491 @@
+<view class="severance-detail-page">
+  <view class="severance-head">
+    <view class="severance-info">
+
+      <view class="severance-title">
+        <view class="severance-name">{{content.title}}</view>
+        <view class="severance-tag">
+          <t-button open-type="share" t-class="shareBtn">
+            <view class="btn-icon">
+              <t-icon name="share" size="32rpx" />
+              <view class="share-text">分享</view>
+            </view>
+          </t-button>
+        </view>
+      </view>
+    </view>
+
+    <t-image src="{{image}}" t-class="swipe-img t-swiper" />
+
+    <view class="comments-wrap">
+      <view class="comments-head">
+        <view class="comments-title-wrap">
+          {{content.survey.title}}
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q01 ------ -->
+    <!--
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q1}}
+        </view>
+        <view class="comment-item-content-q">
+
+          <view class="section">
+            <view class="section__title">日期选择器</view>
+            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+              <view class="picker">
+                当前选择: {{date}}
+              </view>
+            </picker>
+          </view>
+
+        </view>
+      </view>
+    </view>
+    -->
+    <!-- ------ Q02 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q2}}
+        </view>
+        <view class="comment-item-content-q">
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q03 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q3}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              男
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              女
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q04 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q4}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              正在医疗期间
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              在本单位患有职业病，并丧失或部分丧失劳动能力
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              从事接触职业病危害作业的劳动者未进行离岗前职业健康检查，或者疑似职业病病人在诊断或者医学观察期间的
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q05 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q5}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              正在医疗期间
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              在本单位工伤，并丧失或部分丧失劳动力
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q06 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q6}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              是
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              否
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q07 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q7}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              破产、解散
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              经济性裁员
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q08 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q8}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              是
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              否
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q09 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q9}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              是
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              否
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q10 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q10}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              用人单位提前30日以书面形式通知本人
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              用人单位没有提前30日以书面形式通知本人
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q11 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q11}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              用人单位提前30日以书面形式通知劳动者本人
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              用人单位没有提前30日以书面形式通知劳动者本人
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q12 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q12}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              用人单位提前30日以书面形式通知劳动者本人
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              用人单位没有提前30日以书面形式通知劳动者本人
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ------ Q13 ------ -->
+    <view class="comments-wrap-q">
+      <view class="comments-head-q">
+        <view class="comments-title-wrap-q">
+          {{content.survey.q13}}
+        </view>
+        <view class="comment-item-content-q">
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              是
+            </view>
+          </view>
+          <view class="answer-check-item-q">
+            <t-icon
+              size="40rpx"
+              color="{{store.isSelected ? '#FA4126' : '#BBBBBB'}}"
+              name="{{store.isSelected ? 'check-circle-filled' : 'circle'}}"
+              class="answer-check-q3"
+              bindtap="selectAnswerQ3"
+            />
+            <view class="answer-check-item-text-q">
+              否
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <!-- ------ Compute ------ -->
+    <view class="comments-wrap">
+      <view class="comments-head">
+        <view class="comments-title-wrap">
+        </view>
+        <view class="comment-item-content">
+        </view>
+        <view class="submit-btn">
+          赔偿方案计算
+        </view>
+      </view>
+    </view>
+
+
+    <!-- ------ Result ------ -->
+    <view class="comments-wrap">
+      <view class="comments-head" bindtap="navToCommentsListPage">
+        <view class="comments-title-wrap">
+        </view>
+      </view>
+      <view class="comment-item-wrap">
+        <view class="comment-item-content">
+          <rich-text nodes="{{content}}"></rich-text>
+          111111111111111111111
+          222222222222222222222
+
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
+

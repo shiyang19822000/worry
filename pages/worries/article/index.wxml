@@ -13,7 +13,6 @@
 					</t-button>
 				</view>
 			</view>
-			<view class="worry">{{intro}}</view>
 		</view>
 
 		<t-image wx:if="{{detail.art_illustrated}}" src="{{detail.art_illustrated}}" t-class="swipe-img t-swiper" />
