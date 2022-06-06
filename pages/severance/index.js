@@ -493,7 +493,7 @@ Page({
   },
 
   // --------------- Calculator -----------------
-  async calculator() {
+  calculator() {
     this.setData({ compensation: "" });
     let plan = calculate(this.data.store);
     if (plan === "n") {
@@ -502,13 +502,13 @@ Page({
       this.setData({ compensation: this.data.programs.n });
     }
     if (plan === "n1") {
-      const n1 = await fetchCompensation(1);
+      // const n1 = await fetchCompensation(1);
       // this.setData({ compensation: this.data.contents[0].compensations.n1 });
       // this.setData({ compensation: n1.cpns_content });
       this.setData({ compensation: this.data.programs.n1 });
     }
     if (plan === "n2") {
-      const n2 = await fetchCompensation(2);
+      // const n2 = await fetchCompensation(2);
       // this.setData({ compensation: this.data.contents[0].compensations.n2 });
       // this.setData({ compensation: n2.cpns_content });
       this.setData({ compensation: this.data.programs.n2 });

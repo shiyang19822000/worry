@@ -1,12 +1,13 @@
-import { fetchHome } from "../../../services/trouble/trouble";
+import { fetchTroubleList } from "../../../services/trouble/trouble";
 import Toast from "tdesign-miniprogram/toast/index";
+import { fetchHome } from "../../../services/trouble/troubleHome";
 
 Page({
   data: {
     imgSrcs: [],
     tabList: [],
-    goodsList: [],
-    goodsListLoadStatus: 0,
+    troubleList: [],
+    troubleListLoadStatus: 0,
     pageLoading: false,
     current: 1,
     autoplay: true,
@@ -15,7 +16,7 @@ Page({
     navigation: { type: "dots" },
   },
 
-  goodListPagination: {
+  troubleListPagination: {
     index: 0,
     num: 20,
   },
@@ -33,8 +34,8 @@ Page({
   },
 
   onReachBottom() {
-    if (this.data.goodsListLoadStatus === 0) {
-      this.loadGoodsList();
+    if (this.data.troubleListLoadStatus === 0) {
+      this.loadTroubleList();
     }
   },
 
@@ -58,58 +59,60 @@ Page({
         imgSrcs: swiper,
         pageLoading: false,
       });
-      this.loadGoodsList(true);
+      this.loadTroubleList(true);
     });
   },
 
   tabChangeHandle(e) {
     this.privateData.tabIndex = e.detail;
-    this.loadGoodsList(true);
+    this.loadTroubleList(true);
   },
 
   onReTry() {
-    this.loadGoodsList();
+    this.loadTroubleList();
   },
 
-  async loadGoodsList(fresh = false) {
+  async loadTroubleList(fresh = false) {
     if (fresh) {
       wx.pageScrollTo({
         scrollTop: 0,
       });
     }
 
-    this.setData({ goodsListLoadStatus: 1 });
+    this.setData({ troubleListLoadStatus: 1 });
 
-    const pageSize = this.goodListPagination.num;
+    const pageSize = this.troubleListPagination.num;
     let pageIndex =
-      this.privateData.tabIndex * pageSize + this.goodListPagination.index + 1;
+      this.privateData.tabIndex * pageSize +
+      this.troubleListPagination.index +
+      1;
     if (fresh) {
       pageIndex = 0;
     }
 
     try {
-      const nextList = await fetchGoodsList(pageIndex, pageSize);
+      const nextList = await fetchTroubleList(pageIndex, pageSize);
       this.setData({
-        goodsList: fresh ? nextList : this.data.goodsList.concat(nextList),
-        goodsListLoadStatus: 0,
+        troubleList: fresh ? nextList : this.data.troubleList.concat(nextList),
+        troubleListLoadStatus: 0,
       });
 
-      this.goodListPagination.index = pageIndex;
-      this.goodListPagination.num = pageSize;
+      this.troubleListPagination.index = pageIndex;
+      this.troubleListPagination.num = pageSize;
     } catch (err) {
-      this.setData({ goodsListLoadStatus: 3 });
+      this.setData({ troubleListLoadStatus: 3 });
     }
   },
 
-  goodListClickHandle(e) {
+  troubleListClickHandle(e) {
     const { index } = e.detail;
-    const { spuId } = this.data.goodsList[index];
+    const { spuId } = this.data.troubleList[index];
     wx.navigateTo({
       url: `/pages/troubles/article/index?spuId=${spuId}`,
     });
   },
 
-  goodListAddCartHandle() {
+  troubleListAddCartHandle() {
     Toast({
       context: this,
       selector: "#t-toast",
@@ -118,7 +121,7 @@ Page({
   },
 
   navToSearchPage() {
-    wx.navigateTo({ url: "/pages/goods/search/index" });
+    wx.navigateTo({ url: "/pages/trouble/search/index" });
   },
 
   navToActivityDetail({ detail }) {

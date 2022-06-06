@@ -1,5 +1,5 @@
-import { fetchHome } from '../../../services/worry/worryHome';
-import { fetchArticleList } from '../../../services/worry/fetchArticles';
+import { fetchHome } from "../../../services/worry/worryHome";
+import { fetchArticleList } from "../../../services/worry/articles";
 
 Page({
   data: {
@@ -12,7 +12,7 @@ Page({
     autoplay: true,
     duration: 500,
     interval: 5000,
-    navigation: { type: 'dots' },
+    navigation: { type: "dots" },
   },
 
   articleListPagination: {
@@ -81,7 +81,9 @@ Page({
     this.setData({ articlesLoadStatus: 1 });
     const pageSize = this.articleListPagination.num;
     let pageIndex =
-      this.privateData.tabIndex * pageSize + this.articleListPagination.index + 1;
+      this.privateData.tabIndex * pageSize +
+      this.articleListPagination.index +
+      1;
 
     if (fresh) {
       pageIndex = 0;

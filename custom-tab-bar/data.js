@@ -9,11 +9,11 @@ export default [
     text: "小莫",
     url: "pages/severance/index",
   },
-  // {
-  //   icon: "package",
-  //   text: "别闹",
-  //   url: "pages/troubles/home/index",
-  // },
+  {
+    icon: "package",
+    text: "别闹",
+    url: "pages/troubles/home/index",
+  },
   {
     icon: "person",
     text: "小仙",

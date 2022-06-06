@@ -1,14 +1,13 @@
-import { serviceBase } from '../../config/index';
+import { serviceBase } from "../../config/index";
 
-export function fetchExplicitArticleList(offset, limit) {
+export function fetchArticleList(offset, limit) {
   const url = `${serviceBase}/article?art_category=1&art_status=2&activated=1&offset=${offset}&limit=${limit}`;
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
-      data: {
-      },
+      data: {},
       header: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
       success(res) {
         resolve(res);
@@ -27,7 +26,7 @@ export function fetchArticle(articleId) {
       url: url,
       data: {},
       header: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
       success(res) {
         resolve(res);
