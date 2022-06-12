@@ -4,7 +4,7 @@ export default [
     image:
       "https://mmbiz.qpic.cn/mmbiz_jpg/Hicf3eJ6RgX8k9y3HhtpefMRgxsn8ylzL15RKQ342d5sNnd5xuLsqQEnWJZFLdhIemkXvdQHLthPNjNtzsCzSXg/640?wx_f",
     survey: {
-      title: "被动离职赔偿方案",
+      title: "被动离职赔偿方案 - 计算器",
       desc: "为了给您提供更好的服务，希望您能抽出几分钟时间，将您的感受和建议告诉我们，我们非常重视每位用户的宝贵意见，期待您的参与！现在我们就马上开始吧！",
       q1: "01 是否患病",
       q2: "02 是否负伤",

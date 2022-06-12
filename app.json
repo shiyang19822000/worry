@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/severance/index",
     "pages/worries/home/index",
     "pages/worries/article/index",
-    "pages/severance/index",
     "pages/troubles/home/index",
     "pages/troubles/article/index",
     "pages/usercenter/index",
@@ -25,16 +25,16 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/worries/home/index",
-        "text": "莫慌"
-      },
-      {
         "pagePath": "pages/severance/index",
         "text": "小莫"
       },
       {
+        "pagePath": "pages/worries/home/index",
+        "text": "莫慌"
+      },
+      {
         "pagePath": "pages/troubles/home/index",
-        "text": "小莫"
+        "text": "别闹"
       },
       {
         "pagePath": "pages/usercenter/index",
