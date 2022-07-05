@@ -1,5 +1,5 @@
-export async function getCompensation(compensationId) {
-  const { fetchCompensation } = require("./compensation");
-  const request = await fetchCompensation(compensationId);
+export async function getCompensations() {
+  const { fetchCompensations } = require("./compensation");
+  const request = await fetchCompensations();
   return request.data;
 }

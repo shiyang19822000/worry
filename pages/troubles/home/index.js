@@ -1,5 +1,5 @@
-import { fetchTroubleList } from "../../../services/trouble/trouble";
 import Toast from "tdesign-miniprogram/toast/index";
+import { fetchTroubleList } from "../../../services/trouble/troubles";
 import { fetchHome } from "../../../services/trouble/troubleHome";
 
 Page({
@@ -91,12 +91,12 @@ Page({
     }
 
     try {
-      const nextList = await fetchTroubleList(pageIndex, pageSize);
+      const dataList = await fetchTroubleList(pageIndex, pageSize);
+      const nextList = dataList.results;
       this.setData({
         troubleList: fresh ? nextList : this.data.troubleList.concat(nextList),
         troubleListLoadStatus: 0,
       });
-
       this.troubleListPagination.index = pageIndex;
       this.troubleListPagination.num = pageSize;
     } catch (err) {

@@ -1,6 +1,6 @@
 import Contents from "./data";
 import { calculate } from "../../services/severance/calculator";
-import { fetchCompensation } from "../../services/severance/fetchCompensations";
+import { fetchCompensations } from "../../services/severance/fetchCompensations";
 
 Page({
   data: {
@@ -65,11 +65,18 @@ Page({
 
   async loadPrograms() {
     let p = this.data.programs;
-    const n = await fetchCompensation(3);
+    const compensations = await fetchCompensations();
+    const n = compensations.results.filter((item) => {
+      return item.cpns_id === 3;
+    })[0];
     p.n = n.cpns_content;
-    const n1 = await fetchCompensation(1);
+    const n1 = compensations.results.filter((item) => {
+      return item.cpns_id === 1;
+    })[0];
     p.n1 = n1.cpns_content;
-    const n2 = await fetchCompensation(2);
+    const n2 = compensations.results.filter((item) => {
+      return item.cpns_id === 2;
+    })[0];
     p.n2 = n2.cpns_content;
 
     this.setData({ programs: p });

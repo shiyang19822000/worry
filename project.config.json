@@ -68,6 +68,12 @@
           "pathName": "pages/usercenter/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "小闹",
+          "pathName": "pages/demo/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -19,4 +19,9 @@ export default [
     text: "小仙",
     url: "pages/usercenter/index",
   },
+  {
+    icon: "cart",
+    text: "小闹",
+    url: "pages/demo/index",
+  },
 ];

@@ -1,5 +1,5 @@
 import { cdnBase } from "../../../config/index";
-import { fetchArticle } from "../../../model/worry/worry";
+import { fetchWorry } from "../../../services/worry/worries";
 
 const imgPrefix = `${cdnBase}/`;
 const recLeftImg = `${imgPrefix}common/rec-left.png`;
@@ -129,10 +129,10 @@ Page({
   },
 
   async getDetail(articleId) {
-    const articleDetail = await fetchArticle(articleId);
+    const articleDetail = await fetchWorry(articleId);
     this.setData({
-      detail: articleDetail.data,
-      content: this.pretreatRichText(articleDetail.data.art_content),
+      detail: articleDetail[0],
+      content: this.pretreatRichText(articleDetail[0].art_content),
     });
   },
 

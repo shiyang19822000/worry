@@ -1,5 +1,5 @@
 import { fetchHome } from "../../../services/worry/worryHome";
-import { fetchArticleList } from "../../../services/worry/articles";
+import { fetchWorryList } from "../../../services/worry/worries";
 
 Page({
   data: {
@@ -8,7 +8,8 @@ Page({
     articleList: [],
     articlesLoadStatus: 0,
     pageLoading: false,
-    current: 1,
+    current: 0,
+    pageCount: 0,
     autoplay: true,
     duration: 500,
     interval: 5000,
@@ -17,7 +18,7 @@ Page({
 
   articleListPagination: {
     index: 0,
-    num: 20,
+    num: 10,
   },
 
   privateData: {
@@ -33,8 +34,17 @@ Page({
   },
 
   onReachBottom() {
-    if (this.data.articlesLoadStatus === 0) {
+    if (this.data.current <= this.data.pageCount) {
+      let currentPage = this.data.current + 1;
+      this.setData({
+        current: currentPage,
+      });
       this.loadArticleList();
+    } else {
+      wx.showToast({
+        title: "暂无更多数据",
+        icon: "none",
+      });
     }
   },
 
@@ -80,24 +90,23 @@ Page({
 
     this.setData({ articlesLoadStatus: 1 });
     const pageSize = this.articleListPagination.num;
-    let pageIndex =
-      this.privateData.tabIndex * pageSize +
-      this.articleListPagination.index +
-      1;
+    let pageIndex = this.data.current * pageSize;
 
     if (fresh) {
       pageIndex = 0;
     }
 
     try {
-      const nextList = await fetchArticleList(pageIndex, pageSize);
+      const dataList = await fetchWorryList(pageIndex, pageSize);
+      const nextList = dataList.results;
       this.setData({
         articleList: fresh ? nextList : this.data.articleList.concat(nextList),
         articlesLoadStatus: 0,
+        pageCount: Math.ceil(dataList.count / pageSize),
       });
 
-      this.articleListPagination.index = pageIndex;
       this.articleListPagination.num = pageSize;
+      this.articleListPagination.index = pageIndex;
     } catch (err) {
       this.setData({ articlesLoadStatus: 3 });
     }

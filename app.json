@@ -9,7 +9,8 @@
     "pages/usercenter/person-info/index",
     "pages/usercenter/address/list/index",
     "pages/usercenter/address/edit/index",
-    "pages/usercenter/name-edit/index"
+    "pages/usercenter/name-edit/index",
+    "pages/demo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -39,6 +40,10 @@
       {
         "pagePath": "pages/usercenter/index",
         "text": "小仙"
+      },
+      {
+        "pagePath": "pages/demo/index",
+        "text": "小闹"
       }
     ],
     "position": "bottom"

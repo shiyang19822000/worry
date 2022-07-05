@@ -1,0 +1,19 @@
+<!--components/severance-card/index.wxml-->
+<text>components/severance-card/index.wxml</text>
+<view>
+  1111777777777777
+  <image style="width: 200px; height: 200px; background-color: #eeeeee;" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"></image>
+</view>
+11111
+<!-- ------ Compute ------ -->
+<view class="comments-wrap">
+  <view class="comments-head">
+    <view class="comments-title-wrap">
+    </view>
+    <view class="comment-item-content">
+    </view>
+    <view class="submit-btn" bindtap="reset">
+      重新计算
+    </view>
+  </view>
+</view>

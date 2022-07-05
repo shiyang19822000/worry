@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "severance-card": "/components/severance-card/index"
+  }
+}

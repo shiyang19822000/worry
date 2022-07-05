@@ -1,0 +1,10 @@
+/* components/index.wxss */
+.comments-wrap {
+    margin-top: 20rpx;
+    padding: 32rpx;
+    background-color: #fff;
+}
+
+.comments-head {
+    border: 1rpx solid #ec0707;
+}

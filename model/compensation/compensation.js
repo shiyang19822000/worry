@@ -1,7 +1,7 @@
 import { serviceBase } from "../../config/index";
 
-export function fetchCompensation(compensationId) {
-  const url = `${serviceBase}/compensation/${compensationId}`;
+export function fetchCompensations() {
+  const url = `${serviceBase}/compensation/compensation_list`;
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
